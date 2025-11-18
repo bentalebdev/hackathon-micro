@@ -41,8 +41,7 @@ public class AuthController {
         User user = new User();
         user.setUsername(request.username());
         user.setPassword(passwordEncoder.encode(request.password()));
-        user.setRoles("ROLE_USER");
-        userRepository.save(user);
+        user.setRoles(java.util.List.of("ROLE_USER")); // Import java.util.List, or use the fully qualified name        userRepository.save(user);
 
         return jwtService.generateToken(user);
     }
